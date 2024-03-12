@@ -38,6 +38,8 @@ function resetSelected(){
     allGamesIcons.forEach((icon) => {
         icon.classList.remove('selected')
     })
+    stopConfettiInner()
+    removeConfettiInner()
 }
 
 
@@ -80,7 +82,9 @@ function updateScores (playerChoice) {
     }else {
         const choice = choices[playerChoice]
         console.log(choice.defeats.indexOf(computerChoice))
+
         if(choice.defeats.indexOf(computerChoice) > -1){
+            startConfetti()
             resultText.textContent = 'You Won!!!'
             playerScoreNumber++
             playerScoreEl.textContent = playerScoreNumber
@@ -265,7 +269,7 @@ var removeConfetti; //call to stop the confetti animation and remove all confett
 	}
 
 	function removeConfettiInner() {
-		stopConfetti();
+        stopConfettiInner()
 		particles = [];
 	}
 
@@ -318,4 +322,3 @@ var removeConfetti; //call to stop the confetti animation and remove all confett
 	}
 
 
-    startConfetti()
